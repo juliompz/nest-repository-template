@@ -1,0 +1,36 @@
+services:
+  psql-estudo:
+    image: postgres:latest
+    container_name: psql-estudo
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: nest_user
+      POSTGRES_PASSWORD: nest_password
+    ports:
+      - '5433:5432'
+    volumes:
+      - db-estudo:/var/lib/postgresql/data
+  redis-estudo:
+    image: redis:latest
+    container_name: redis-estudo
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+  rabbitmq-estudo:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-estudo
+    environment:
+      RABBITMQ_ERLANG_COOKIE: rabbitmq
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+volumes:
+  redis-data:
+  db-estudo:
+  rabbitmq-data:
