@@ -56,7 +56,7 @@ export class AuthController {
   }
 
   @UseGuards(RefreshAuthGuard)
-  @Get('/refresh')
+  @Post('/refresh')
   refresh(
     @Req() req: RequestWithUser,
     @Body() body: { refresh_token: string },
