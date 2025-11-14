@@ -28,8 +28,7 @@ export class UsuarioFactory {
       usuario.provider,
       usuario.roles,
     );
-    const validator = new UsuarioValidator();
-    usuarioEntity.validateForUpdate(validator);
+    usuarioEntity.validateForUpdate();
 
     return usuarioEntity;
   }
