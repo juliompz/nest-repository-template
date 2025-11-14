@@ -31,13 +31,8 @@ export class UsuarioEntity {
     return new UsuarioValidator().validateForCreate(this);
   }
 
-  validateForUpdate(validator: UsuarioValidator) {
-    validator.validateForUpdate({
-      name: this._name,
-      email: this._email,
-      password: this._password,
-      roles: this._roles,
-    });
+  validateForUpdate() {
+    return new UsuarioValidator().validateForUpdate(this);
   }
 
   get id(): string {
